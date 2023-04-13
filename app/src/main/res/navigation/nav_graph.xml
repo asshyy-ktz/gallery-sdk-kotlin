@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/CameraFragment">
+
+    <fragment
+        android:id="@+id/CameraFragment"
+        android:name="com.gallery.sdk.views.fragments.camera.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
+        <argument
+            android:name="maxVideoRecordLimit"
+            app:argType="string" />
+        <argument
+            android:name="maxSelectionLimit"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_photoImageCameraFragment_to_mediaPreviewFragment"
+            app:destination="@id/mediaPreviewFragment" />
+        <action
+            android:id="@+id/action_photoImageCameraFragment_to_customGalleryFragment"
+            app:destination="@id/customGalleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mediaPreviewFragment"
+        android:name="com.gallery.sdk.views.fragments.mediaPreview.MediaPreviewFragment"
+        android:label="fragment_media_preview"
+        tools:layout="@layout/fragment_media_preview">
+        <argument
+            android:name="list"
+            app:argType="android.net.Uri[]" />
+        <action
+            android:id="@+id/action_mediaPreviewFragment_to_photoEditFragment"
+            app:destination="@id/photoEditFragment" />
+        <action
+            android:id="@+id/action_mediaPreviewFragment_to_videoEditFragment"
+            app:destination="@id/videoEditFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/customGalleryFragment"
+        android:name="com.gallery.sdk.views.fragments.gallery.CustomGalleryFragment"
+        android:label="fragment_custom_gallery"
+        tools:layout="@layout/fragment_custom_gallery"></dialog>
+    <fragment
+        android:id="@+id/photoEditFragment"
+        android:name="com.gallery.sdk.views.fragments.photoEdit.PhotoEditFragment"
+        android:label="fragment_photo_edit"
+        tools:layout="@layout/fragment_photo_edit">
+        <argument
+            android:name="path"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_photoEditFragment_to_mediaPreviewFragment"
+            app:destination="@id/mediaPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoEditFragment"
+        android:name="com.gallery.sdk.views.fragments.videoEdit.VideoEditFragment"
+        android:label="fragment_video_edit"
+        tools:layout="@layout/fragment_video_edit">
+        <argument
+            android:name="path"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_videoEditFragment_to_mediaPreviewFragment"
+            app:destination="@id/mediaPreviewFragment" />
+    </fragment>
+</navigation>
